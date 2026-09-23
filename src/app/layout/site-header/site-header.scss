@@ -1,0 +1,135 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav {
+  position: relative;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.scrolled {
+  box-shadow: 0 8px 24px rgba(0, 26, 54, 0.08);
+  border-bottom-color: var(--line);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--orange);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.wordmark strong {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.wordmark small {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-links a:not(.nav-cta) {
+  font-size: 0.86rem;
+  color: var(--navy);
+  padding: 8px 9px;
+  font-weight: 600;
+}
+
+.nav-links a.active,
+.nav-links a:not(.nav-cta):hover {
+  color: var(--blue);
+}
+
+.nav-cta {
+  margin-left: 8px;
+  min-height: 42px;
+  padding-inline: 14px;
+  font-size: 0.86rem;
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--navy);
+  box-shadow: 0 -6px 0 var(--navy), 0 6px 0 var(--navy);
+}
+
+@media (max-width: 1180px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 20px 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav.open .nav-links {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-cta {
+    margin: 8px 0 0;
+  }
+}

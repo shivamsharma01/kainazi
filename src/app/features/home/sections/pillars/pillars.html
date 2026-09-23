@@ -1,0 +1,19 @@
+<section class="section" id="what">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="What we do"
+      title="Outcomes first. Architecture as evidence."
+      lead="From modern web applications and APIs to cloud migration, integration, and data platforms, we help organisations design, build, and modernize reliable software systems."
+    />
+    <div class="grid">
+      @for (pillar of content.pillars; track pillar.id) {
+        <article class="pillar" [attr.data-tone]="pillar.tone">
+          <span class="no">{{ pillar.index }}</span>
+          <h3>{{ pillar.title }}</h3>
+          <p>{{ pillar.summary }}</p>
+          <span class="out">{{ pillar.outcome }}</span>
+        </article>
+      }
+    </div>
+  </div>
+</section>

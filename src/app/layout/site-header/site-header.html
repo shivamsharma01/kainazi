@@ -1,0 +1,39 @@
+<header class="nav" [class.scrolled]="scrolled()" [class.open]="menuOpen()">
+  <div class="progress" [style.width.%]="progress()"></div>
+  <div class="nav-inner wrap">
+    <a class="brand" href="#home" (click)="closeMenu()" [attr.aria-label]="content.companyName + ' home'">
+      <app-brand-mark variant="compact" />
+      <span class="wordmark">
+        <strong>Kainazi</strong>
+        <small>Technology Solutions</small>
+      </span>
+    </a>
+    <nav class="nav-links" id="primary-nav" aria-label="Primary">
+      @for (link of content.navLinks; track link.id) {
+        @if (link.cta) {
+          <a appButton variant="secondary" class="nav-cta" [href]="'#' + link.id" (click)="closeMenu()">
+            {{ link.label }}
+          </a>
+        } @else {
+          <a
+            [href]="'#' + link.id"
+            [class.active]="activeId() === link.id"
+            (click)="closeMenu()"
+          >
+            {{ link.label }}
+          </a>
+        }
+      }
+    </nav>
+    <button
+      class="nav-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-nav"
+      [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,247 @@
+<section class="section" id="architecture">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Flagship portfolio · Phase 0 complete"
+      title="Current architecture is the product."
+      lead="MCART as-built first. Case studies are problems extracted from that system — pick one when you are ready to write."
+    />
+
+    <ul class="legend" aria-label="Honesty labels">
+      <li><span class="dot live"></span> In code</li>
+      <li><span class="dot intent"></span> Design intent (diagrams / docs only)</li>
+      <li><span class="dot none"></span> Not planned</li>
+    </ul>
+
+    <!-- A. Executive brief -->
+    <div class="brief">
+      <p class="eyebrow">A · Executive brief</p>
+      <p><strong>{{ content.flagshipExecBrief.what }}</strong> {{ content.flagshipExecBrief.covers }}</p>
+      <p>{{ content.flagshipExecBrief.style }}</p>
+      <p class="honesty">{{ content.flagshipExecBrief.honesty }}</p>
+      <p>{{ content.flagshipExecBrief.why }}</p>
+    </div>
+
+    <div class="facts">
+      @for (fact of content.flagshipPlatformFacts; track fact.label) {
+        <div class="fact">
+          <span class="fact-label">{{ fact.label }}</span>
+          <strong>{{ fact.value }}</strong>
+        </div>
+      }
+    </div>
+
+    <!-- Diagrams -->
+    <div class="diagrams-block">
+      <div class="diagrams-head">
+        <div>
+          <p class="eyebrow">As-built diagrams</p>
+          <h3 class="subhead">Live architecture — not design intent</h3>
+        </div>
+        <button type="button" class="toggle" (click)="toggleDiagramSet()">
+          {{ showAllDiagrams() ? 'Show priority only' : 'Show all diagrams' }}
+        </button>
+      </div>
+
+      <div class="diagram-tabs" role="tablist" aria-label="As-built diagrams">
+        @for (diagram of diagramTabs(); track diagram.id) {
+          <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="selectedDiagramId() === diagram.id"
+            [class.active]="selectedDiagramId() === diagram.id"
+            (click)="selectDiagram(diagram.id)"
+          >
+            {{ diagram.number }}. {{ diagram.title }}
+          </button>
+        }
+      </div>
+
+      <div class="diagram-panel">
+        <p class="diagram-note">{{ activeDiagram().blurb }}</p>
+        <app-mermaid-diagram [chart]="activeDiagram().chart" [title]="activeDiagram().title" />
+      </div>
+
+      <p class="diagram-note stack-note">Compact service stack (same system):</p>
+      <app-arch-diagram [layers]="content.flagshipAsBuiltDiagram" />
+    </div>
+
+    <!-- Guide chapters B, D–I -->
+    <h3 class="subhead">As-built guide</h3>
+    <div class="chapters">
+      @for (chapter of content.flagshipGuideChapters; track chapter.id) {
+        <article class="chapter">
+          <p class="eyebrow">{{ chapter.letter }} · {{ chapter.title }}</p>
+          <p>{{ chapter.body }}</p>
+          @if (chapter.bullets?.length) {
+            <ul>
+              @for (bullet of chapter.bullets; track bullet) {
+                <li>{{ bullet }}</li>
+              }
+            </ul>
+          }
+        </article>
+      }
+    </div>
+
+    <!-- C. Service catalog -->
+    <h3 class="subhead">C · Service catalog</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+            <th>APIs</th>
+            <th>Store</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of content.flagshipServiceCatalog; track row.service) {
+            <tr>
+              <td><code>{{ row.service }}</code></td>
+              <td>{{ row.purpose }}</td>
+              <td>{{ row.apis }}</td>
+              <td>{{ row.store }}</td>
+              <td>{{ row.role }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Consistency -->
+    <h3 class="subhead">Consistency model today</h3>
+    <div class="consistency">
+      @for (row of content.flagshipConsistency; track row.flow) {
+        <div class="cons-row">
+          <strong>{{ row.flow }}</strong>
+          <span>{{ row.model }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Layers -->
+    <div class="product">
+      <div class="product-copy">
+        <p class="eyebrow">Domain status</p>
+        <h3>Layers</h3>
+        <p>What is running versus design-intent boxes from older diagrams.</p>
+      </div>
+      <ol class="layers">
+        @for (layer of content.flagshipLayers; track layer.name) {
+          <li>
+            <button
+              type="button"
+              [class.active]="selectedLayer() === layer.name"
+              (click)="selectLayer(layer.name)"
+            >
+              <span class="name">{{ layer.name }}</span>
+              <span class="purpose">{{ layer.purpose }}</span>
+            </button>
+          </li>
+        }
+      </ol>
+    </div>
+
+    <div class="layer-detail">
+      <p class="eyebrow">{{ activeLayer().name }}</p>
+      <p class="purpose-lead">{{ activeLayer().purpose }}</p>
+      <div class="domains">
+        @for (domain of activeLayer().domains; track domain.name) {
+          <span class="domain" [attr.data-status]="domain.status">
+            <app-tag>{{ domain.name }}</app-tag>
+            <em>{{ statusLabel(domain.status) }}</em>
+          </span>
+        }
+      </div>
+    </div>
+
+    <h3 class="subhead">Capabilities in code</h3>
+    <ul class="capabilities">
+      @for (capability of implementedCapabilities(); track capability.name) {
+        <li>
+          <strong>{{ capability.name }}</strong>
+          <span>{{ capability.extractedFrom }}</span>
+        </li>
+      }
+    </ul>
+
+    @if (designIntentCapabilities().length) {
+      <h3 class="subhead muted-head">Design intent only — not in code</h3>
+      <ul class="capabilities intent-caps">
+        @for (capability of designIntentCapabilities(); track capability.name) {
+          <li>
+            <strong>{{ capability.name }}</strong>
+            <span>{{ capability.extractedFrom }}</span>
+          </li>
+        }
+      </ul>
+    }
+
+    <!-- J. Errata / scope -->
+    <div class="scope">
+      <p class="eyebrow">J · Not in code</p>
+      <h3>Fulfilment and other diagram leftovers</h3>
+      <p class="lead">
+        Named in older enterprise diagrams. Not Phase 0 deliverables. Do not treat as live.
+      </p>
+      <div class="scope-grid">
+        @for (item of content.flagshipScopeCallouts; track item.name) {
+          <article class="scope-card">
+            <h4>{{ item.name }}</h4>
+            <p><strong>Represents.</strong> {{ item.represents }}</p>
+            <p><strong>Decision.</strong> {{ item.decision }}</p>
+          </article>
+        }
+      </div>
+    </div>
+
+    <!-- Demos -->
+    <div class="demos-head">
+      <p class="eyebrow">Demos from current behavior</p>
+      <h3>Prove the platform before writing a case study</h3>
+    </div>
+    <div class="demos">
+      @for (demo of content.flagshipDemos; track demo.id) {
+        <article class="demo">
+          <span class="demo-letter">Demo {{ demo.letter }}</span>
+          <h4>{{ demo.title }}</h4>
+          <p class="meta">{{ demo.duration }} · {{ demo.proves }}</p>
+          <ol>
+            @for (step of demo.steps; track step) {
+              <li>{{ step }}</li>
+            }
+          </ol>
+        </article>
+      }
+    </div>
+
+    <!-- Case studies -->
+    <div class="cases-head">
+      <p class="eyebrow">Modernization case studies</p>
+      <h3>Phase 0 done — pick a study to write next</h3>
+      <p class="lead">
+        Titles match the assessment. Start with as-built evidence, then proposed modernization.
+        Case Study 1 (checkout) is the recommended first write-up.
+      </p>
+    </div>
+
+    <div class="cases">
+      @for (study of content.caseStudies; track study.id; let i = $index) {
+        <article class="case">
+          <div class="case-top">
+            <span class="status">{{ statusLabel(study.status) }}</span>
+            <span class="case-num">Case Study {{ i + 1 }}</span>
+          </div>
+          <h4>{{ study.title }}</h4>
+          <p class="opening">“{{ study.openingLine }}”</p>
+          <p>{{ study.problem }}</p>
+          <p><strong>Constraint.</strong> {{ study.constraint }}</p>
+          <p class="as-built"><strong>As-built.</strong> {{ study.asBuilt }}</p>
+          <p><strong>Write next.</strong> {{ study.documentationFocus }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="section" id="industries">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Industries"
+      title="Where the problems match the work."
+      lead="We start where the constraints match our practice — not a list of fifteen industries we claim to serve."
+    />
+    <div class="grid">
+      @for (industry of content.industries; track industry.title) {
+        <app-card [accent]="true">
+          <span class="k">{{ industry.index }}</span>
+          <h3>{{ industry.title }}</h3>
+          <p>{{ industry.summary }}</p>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

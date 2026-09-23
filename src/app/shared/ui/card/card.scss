@@ -1,0 +1,10 @@
+:host.card {
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 22px;
+}
+
+:host.accent {
+  border-top: 3px solid var(--navy);
+}

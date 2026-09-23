@@ -1,0 +1,17 @@
+<section class="section alt" id="engage">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Engagement models"
+      title="Clear ways to begin."
+      lead="Select the shape of the work. We remain small by design — you speak with the people writing the code."
+    />
+    <div class="grid">
+      @for (model of content.engagementModels; track model.title) {
+        <app-card>
+          <h3>{{ model.title }}</h3>
+          <p>{{ model.summary }}</p>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

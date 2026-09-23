@@ -1,0 +1,31 @@
+<section class="section alt" id="services">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Services"
+      title="Six offerings. No filler."
+      lead="We sell engineering work you can ship — not a catalogue of every tool we have touched."
+    />
+    <div class="grid">
+      @for (service of content.services; track service.id) {
+        <article class="svc" [class.featured]="service.featured">
+          <app-icon [name]="service.icon" />
+          @if (service.badge) {
+            <span class="mark">{{ service.badge }}</span>
+          }
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.summary }}</p>
+          <ul>
+            @for (point of service.points; track point) {
+              <li>{{ point }}</li>
+            }
+          </ul>
+          <div class="tags">
+            @for (tag of service.tags; track tag) {
+              <app-tag>{{ tag }}</app-tag>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

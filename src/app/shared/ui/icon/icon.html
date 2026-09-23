@@ -1,0 +1,43 @@
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+  @switch (name()) {
+    @case ('building') {
+      <path d="M4 20V8l8-4 8 4v12" />
+      <path d="M4 12l8 4 8-4" />
+    }
+    @case ('grid') {
+      <rect x="4" y="4" width="16" height="16" rx="1" />
+      <path d="M4 10h16M10 20V10" />
+    }
+    @case ('cloud') {
+      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" />
+      <path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" />
+    }
+    @case ('nodes') {
+      <path d="M8 7H4v4M16 7h4v4M8 17H4v-4M16 17h4v-4" />
+      <path d="M8 9h8M8 15h8" />
+    }
+    @case ('chart') {
+      <path d="M4 19V5M4 19h16" />
+      <path d="M7 15l4-6 3 4 4-7" />
+    }
+    @case ('shield') {
+      <path d="M9 12l2 2 4-4" />
+      <circle cx="12" cy="12" r="9" />
+    }
+    @case ('architecture') {
+      <path d="M4 20V8l8-4 8 4v12" />
+      <path d="M4 12l8 4 8-4" />
+    }
+    @case ('product') {
+      <rect x="5" y="5" width="14" height="14" rx="1" />
+      <path d="M5 10h14M12 10v9" />
+    }
+    @case ('platform') {
+      <path d="M5 18l7-12 7 12" />
+      <circle cx="12" cy="16" r="2" />
+    }
+    @case ('systems') {
+      <path d="M4 12h16M7 7h10M7 17h10" />
+    }
+  }
+</svg>

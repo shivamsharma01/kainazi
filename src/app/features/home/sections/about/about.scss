@@ -1,0 +1,41 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.role {
+  color: var(--blue);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  margin: 14px 0 6px;
+}
+
+h3 {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.note {
+  margin-top: 18px;
+}
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

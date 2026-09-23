@@ -1,0 +1,15 @@
+<div class="arch" role="img" [attr.aria-label]="'Architecture layers'">
+  @for (row of layers(); track $index; let last = $last) {
+    <div class="row">
+      @for (node of row; track node.title) {
+        <div class="node">
+          <strong>{{ node.title }}</strong>
+          <span>{{ node.subtitle }}</span>
+        </div>
+      }
+    </div>
+    @if (!last) {
+      <div class="flow" aria-hidden="true"></div>
+    }
+  }
+</div>

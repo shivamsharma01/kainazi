@@ -1,0 +1,23 @@
+<section class="section alt" id="about">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Founding engineering team"
+      title="Four engineers. No layers."
+      lead="A prospective client should expect this: experienced engineers work directly on the engagement. We do not staff a pyramid and disappear behind account managers."
+    />
+    <div class="grid">
+      @for (member of content.team; track member.title) {
+        <app-card>
+          <app-icon [name]="member.icon" />
+          <div class="role">{{ member.discipline }}</div>
+          <h3>{{ member.title }}</h3>
+          <p>{{ member.summary }}</p>
+        </app-card>
+      }
+    </div>
+    <p class="fine note">
+      Titles reflect how we staff work — not a corporate organisation chart. If the project requires
+      four full-stack engineers, that is what you receive.
+    </p>
+  </div>
+</section>

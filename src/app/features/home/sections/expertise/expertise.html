@@ -1,0 +1,41 @@
+<section class="section" id="expertise">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Technology expertise"
+      title="The stack behind the work."
+      lead="Organised by concern — not a homepage wall of logos. Proof that we can ship the outcomes above."
+    />
+    <div class="panel">
+      <div class="tabs" role="tablist" aria-label="Technology categories">
+        @for (category of content.techCategories; track category.id) {
+          <button
+            type="button"
+            role="tab"
+            [id]="'tab-' + category.id"
+            [attr.aria-selected]="selectedId() === category.id"
+            [attr.aria-controls]="'panel-' + category.id"
+            (click)="select(category.id)"
+          >
+            {{ category.label }}
+          </button>
+        }
+      </div>
+      @for (category of content.techCategories; track category.id) {
+        @if (selectedId() === category.id) {
+          <div
+            class="body"
+            role="tabpanel"
+            [id]="'panel-' + category.id"
+            [attr.aria-labelledby]="'tab-' + category.id"
+          >
+            <div class="chips">
+              @for (item of category.items; track item) {
+                <app-tag>{{ item }}</app-tag>
+              }
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>

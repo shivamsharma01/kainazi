@@ -1,0 +1,13 @@
+<section class="section" id="why">
+  <div class="wrap">
+    <app-section-header eyebrow="Why work with us" title="Trust, stated plainly." />
+    <div class="grid">
+      @for (point of content.trustPoints; track point.title) {
+        <app-card>
+          <h3>{{ point.title }}</h3>
+          <p>{{ point.summary }}</p>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

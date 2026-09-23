@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(11, 92, 171, 0.08);
+  color: var(--blue);
+}
+
+svg {
+  width: 18px;
+  height: 18px;
+}

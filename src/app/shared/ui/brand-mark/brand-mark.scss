@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: var(--white);
+}
+
+:host.compact img {
+  height: 40px;
+  width: auto;
+  max-width: 168px;
+  object-fit: contain;
+}
+
+:host.hero {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  padding: 24px;
+}
+
+:host.hero img {
+  max-height: 560px;
+  width: auto;
+  object-fit: contain;
+}

@@ -1,0 +1,59 @@
+<section class="section alt" id="contact">
+  <div class="wrap grid">
+    <div>
+      <app-section-header
+        eyebrow="Contact"
+        title="Have a programme in mind?"
+        lead="Tell us what you are trying to build, modernize, or integrate. We will respond with questions, not a generic pitch deck."
+      />
+      <p class="fine">
+        Prefer email?
+        <a [href]="'mailto:' + content.email">{{ content.email }}</a>
+      </p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="company">Company</label>
+        <input id="company" formControlName="company" autocomplete="organization" />
+      </div>
+      <div class="field full">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="need">Requirement</label>
+        <select id="need" formControlName="need">
+          @for (need of content.inquiryNeeds; track need.value) {
+            <option [value]="need.value">{{ need.label }}</option>
+          }
+        </select>
+      </div>
+      <div class="field">
+        <label for="timeline">Estimated timeline</label>
+        <select id="timeline" formControlName="timeline">
+          @for (timeline of content.inquiryTimelines; track timeline) {
+            <option [value]="timeline">{{ timeline }}</option>
+          }
+        </select>
+      </div>
+      <div class="field full">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          placeholder="What are you trying to build, modernize, or integrate?"
+        ></textarea>
+      </div>
+      @if (status(); as message) {
+        <p class="form-msg" [class.err]="message.kind === 'err'" role="status">{{ message.text }}</p>
+      }
+      <div class="field full">
+        <button appButton variant="primary" type="submit">Discuss the work</button>
+      </div>
+    </form>
+  </div>
+</section>

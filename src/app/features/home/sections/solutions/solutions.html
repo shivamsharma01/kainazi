@@ -1,0 +1,40 @@
+<section class="section alt" id="solutions">
+  <div class="wrap">
+    <app-section-header
+      eyebrow="Representative solutions"
+      title="Architectures you can inspect."
+      lead="These are solution designs — clearly labelled, not claimed as client case studies. They show how we think when a real system needs to be built."
+    />
+    <div class="layout">
+      <div class="nav" role="tablist" aria-label="Solution designs">
+        @for (solution of content.solutions; track solution.id) {
+          <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="selectedId() === solution.id"
+            (click)="select(solution.id)"
+          >
+            <small>{{ solution.kicker }}</small>
+            <strong>{{ solution.title }}</strong>
+          </button>
+        }
+      </div>
+      <article class="board">
+        <div class="meta">
+          <span class="ribbon">Representative solution · not a client case study</span>
+          <h3>{{ selected().title }}</h3>
+        </div>
+        <app-arch-diagram [layers]="selected().layers" />
+        <div class="copy">
+          <p><strong>Challenge.</strong> {{ selected().challenge }}</p>
+          <div class="approach">
+            @for (item of selected().approach; track item) {
+              <app-tag>{{ item }}</app-tag>
+            }
+          </div>
+        </div>
+        <p class="outcome"><strong>Outcome.</strong> {{ selected().outcome }}</p>
+      </article>
+    </div>
+  </div>
+</section>
