@@ -37,4 +37,4 @@ curl -sS -o /dev/null -w "%{http_code}\n" https://www.kainazi.com/
 curl -sS https://www.kainazi.com/ | head
 ```
 
-Contact mailto uses `contact@kainazi.com` (see `src/app/core/data/site.content.ts`).
+Contact mailto uses `sales@kainazi.com` (see `src/app/core/data/site.content.ts`).

@@ -19,7 +19,7 @@ import {
 
 export const COMPANY_NAME = 'Kainazi Technology Solutions';
 export const COMPANY_SHORT_NAME = 'Kainazi';
-export const COMPANY_EMAIL = 'contact@kainazi.com';
+export const COMPANY_EMAIL = 'sales@kainazi.com';
 export const COMPANY_SITE_URL = 'https://www.kainazi.com';
 export const BRAND_IMAGE = 'brand/kainazi-identity.jpeg';
 
