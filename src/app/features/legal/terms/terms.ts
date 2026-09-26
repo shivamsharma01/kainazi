@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteContentService } from '../../core/services/site-content';
+import { SiteContentService } from '../../../core/services/site-content';
 
 @Component({
-  selector: 'app-site-footer',
+  selector: 'app-terms',
   imports: [RouterLink],
-  templateUrl: './site-footer.html',
-  styleUrl: './site-footer.scss',
+  templateUrl: './terms.html',
+  styleUrl: '../legal-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SiteFooter {
+export class Terms {
   readonly content = inject(SiteContentService);
-  readonly year = new Date().getFullYear();
+  readonly effectiveDate = '26 September 2026';
 }

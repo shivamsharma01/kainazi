@@ -1,7 +1,7 @@
 <header class="nav" [class.scrolled]="scrolled()" [class.open]="menuOpen()">
   <div class="progress" [style.width.%]="progress()"></div>
   <div class="nav-inner wrap">
-    <a class="brand" href="#home" (click)="closeMenu()" [attr.aria-label]="content.companyName + ' home'">
+    <a class="brand" routerLink="/" (click)="closeMenu()" [attr.aria-label]="content.companyName + ' home'">
       <app-brand-mark variant="compact" />
       <span class="wordmark">
         <strong>Kainazi</strong>
@@ -11,13 +11,21 @@
     <nav class="nav-links" id="primary-nav" aria-label="Primary">
       @for (link of content.navLinks; track link.id) {
         @if (link.cta) {
-          <a appButton variant="secondary" class="nav-cta" [href]="'#' + link.id" (click)="closeMenu()">
+          <a
+            appButton
+            variant="secondary"
+            class="nav-cta"
+            routerLink="/"
+            [fragment]="link.id"
+            (click)="closeMenu()"
+          >
             {{ link.label }}
           </a>
         } @else {
           <a
-            [href]="'#' + link.id"
-            [class.active]="activeId() === link.id"
+            routerLink="/"
+            [fragment]="link.id"
+            [class.active]="onHome() && activeId() === link.id"
             (click)="closeMenu()"
           >
             {{ link.label }}

@@ -8,6 +8,16 @@ footer {
 .foot {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.legal-links {
+  display: flex;
+  gap: 18px;
+}
+
+.legal-links a:hover {
+  color: var(--white);
 }

@@ -7,13 +7,16 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 import { SiteContentService } from '../../core/services/site-content';
 import { BrandMark } from '../../shared/ui/brand-mark/brand-mark';
 import { Button } from '../../shared/ui/button/button';
 
 @Component({
   selector: 'app-site-header',
-  imports: [BrandMark, Button],
+  imports: [BrandMark, Button, RouterLink],
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,14 +24,23 @@ import { Button } from '../../shared/ui/button/button';
 export class SiteHeader {
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
   readonly content = inject(SiteContentService);
 
   readonly menuOpen = signal(false);
   readonly scrolled = signal(false);
   readonly progress = signal(0);
   readonly activeId = signal('home');
+  readonly onHome = signal(this.isHomePath(this.router.url));
 
   constructor() {
+    this.router.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe((event) => this.onHome.set(this.isHomePath(event.urlAfterRedirects)));
+
     afterNextRender(() => {
       const onScroll = (): void => this.updateFromScroll();
       this.document.defaultView?.addEventListener('scroll', onScroll, { passive: true });
@@ -45,6 +57,11 @@ export class SiteHeader {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+  }
+
+  private isHomePath(url: string): boolean {
+    const path = url.split(/[?#]/)[0];
+    return path === '/' || path === '';
   }
 
   private updateFromScroll(): void {

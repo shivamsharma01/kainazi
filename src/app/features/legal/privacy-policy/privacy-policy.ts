@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteContentService } from '../../core/services/site-content';
+import { SiteContentService } from '../../../core/services/site-content';
 
 @Component({
-  selector: 'app-site-footer',
+  selector: 'app-privacy-policy',
   imports: [RouterLink],
-  templateUrl: './site-footer.html',
-  styleUrl: './site-footer.scss',
+  templateUrl: './privacy-policy.html',
+  styleUrl: '../legal-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SiteFooter {
+export class PrivacyPolicy {
   readonly content = inject(SiteContentService);
-  readonly year = new Date().getFullYear();
+  readonly effectiveDate = '26 September 2026';
 }

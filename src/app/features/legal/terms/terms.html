@@ -1,0 +1,78 @@
+<article class="section legal">
+  <div class="wrap">
+    <div class="legal-doc">
+    <p class="eyebrow">Kainazi Server Backup</p>
+    <h1>Terms of Service</h1>
+    <p class="fine effective">Effective {{ effectiveDate }}</p>
+
+    <p>
+      These terms cover <strong>Kainazi Server Backup</strong>, a private utility operated by
+      {{ content.companyName }} for the owner of the Kainazi systems. The utility automatically
+      uploads server backup files to the owner’s Google Drive account.
+    </p>
+    <p>
+      The website at <a [href]="content.siteUrl">{{ content.siteUrl }}</a> describes Kainazi
+      Technology Solutions. These terms apply to Kainazi Server Backup and to the authorization
+      pages published for it.
+    </p>
+
+    <h2>Who may use it</h2>
+    <p>
+      Kainazi Server Backup is for the owner. It is not a public service and it is not licensed for
+      use by other parties.
+    </p>
+
+    <h2>Google account</h2>
+    <p>
+      Uploads to Google Drive require the owner to grant permission through Google’s authorization
+      screen. The owner can revoke that permission at any time from the Google Account settings.
+      How Google data is handled is described in the
+      <a routerLink="/privacy-policy">Privacy Policy</a>.
+    </p>
+
+    <h2>Your files</h2>
+    <p>
+      Server backup files uploaded by the utility belong to the owner and are stored in the owner’s
+      Google Drive account. Kainazi does not claim ownership of those files. The application does
+      not sell, share, or use Google Drive data for advertising or any unrelated purpose.
+    </p>
+
+    <h2>Acceptable use</h2>
+    <p>
+      The utility may be used only to back up the owner’s servers to the owner’s Google Drive
+      account. It may not be used to access, copy, or distribute anyone else’s Google data.
+    </p>
+
+    <h2>Availability</h2>
+    <p>
+      Kainazi Server Backup is a private operational tool. An upload can fail if Google, the
+      network, or the server is unavailable, or if authorization has been revoked. The owner is
+      responsible for confirming that backups completed.
+    </p>
+
+    <h2>Disclaimer</h2>
+    <p>
+      The utility is provided as an internal operational aid. To the extent permitted by law, it is
+      provided without warranties of uninterrupted or error-free operation.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      Updated terms will be posted at
+      <a [href]="content.siteUrl + '/terms'">{{ content.siteUrl }}/terms</a>. Continued use of the
+      utility after an update means the owner accepts the updated terms.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about these terms:
+      <a [href]="'mailto:' + content.email">{{ content.email }}</a>
+    </p>
+
+    <nav class="related" aria-label="Related">
+      <a routerLink="/">Home</a>
+      <a routerLink="/privacy-policy">Privacy Policy</a>
+    </nav>
+    </div>
+  </div>
+</article>
