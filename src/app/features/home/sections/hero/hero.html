@@ -3,24 +3,26 @@
     <div class="aurora"></div>
     <canvas appConstellation></canvas>
   </div>
-  <div class="wrap hero-grid">
-    <div class="copy">
-      <p class="eyebrow">Software engineering and cloud solutions</p>
-      <h1>Build. Integrate.<br /><em>Modernize.</em> Scale.</h1>
-      <p class="intro">
-        {{ content.companyName }} designs and delivers secure, scalable software systems for
-        organisations that require architectural clarity and disciplined engineering.
-      </p>
-      <div class="actions">
-        <a appButton variant="accent" href="#contact">Request a conversation</a>
-        <a appButton variant="ghost" href="#architecture">Review the flagship architecture</a>
-      </div>
-      <p class="caps" aria-label="Capabilities">
-        Software engineering · Cloud and DevOps · API integration · Data platforms · Quality
-      </p>
+  <div class="wrap copy">
+    <p class="eyebrow">Software engineering for systems that have to last</p>
+    <h1>Build. Integrate.<br /><em>Modernize.</em> Scale.</h1>
+    <p class="intro">
+      We design and ship the software behind orders, payments, platforms, and the integrations between them.
+    </p>
+    <div class="actions">
+      <a appButton variant="accent" routerLink="/" fragment="contact">Start a conversation</a>
+      <a appButton variant="ghost" routerLink="/work">See the work</a>
     </div>
-    <aside class="identity" aria-label="Company identity">
-      <app-brand-mark variant="hero" />
-    </aside>
+  </div>
+  <div class="rail">
+    <div class="wrap rail-grid">
+      @for (pillar of content.pillars; track pillar.id) {
+        <div>
+          <span>{{ pillar.index }}</span>
+          <strong>{{ pillar.title }}</strong>
+          <p>{{ pillar.outcome }}</p>
+        </div>
+      }
+    </div>
   </div>
 </section>

@@ -1,0 +1,52 @@
+<section class="section work" id="work">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Work</p>
+        <h2>Systems we can walk through.</h2>
+      </div>
+      <p>
+        A gym platform in production, then the architectures behind orders, banking, cloud, and data.
+      </p>
+    </div>
+
+    @for (product of content.shippedWork; track product.id) {
+      <a class="shipped" [routerLink]="['/work', product.id]">
+        <div class="shipped-copy">
+          <span class="kicker">{{ product.kicker }}</span>
+          <strong>{{ product.title }}</strong>
+          <p>{{ product.summary }}</p>
+          <span class="go">View the system</span>
+        </div>
+        <img [src]="product.images[0].src" [alt]="product.images[0].alt" />
+      </a>
+    }
+
+    <div class="grid">
+      @for (solution of content.solutions; track solution.id; let i = $index) {
+        <a class="card" [class.feature]="i === 0" [routerLink]="['/work', solution.id]">
+          <span class="kicker">{{ solution.kicker }}</span>
+          <strong>{{ solution.title }}</strong>
+          @if (i === 0) {
+            <p>{{ solution.outcome }}</p>
+          }
+          <span class="go">View architecture</span>
+        </a>
+      }
+    </div>
+
+    <p class="industries">
+      @for (industry of content.industries; track industry.title; let last = $last) {
+        <span>{{ industry.title }}</span>
+        @if (!last) {
+          <span class="dot" aria-hidden="true">·</span>
+        }
+      }
+    </p>
+
+    <div class="links">
+      <a routerLink="/work">All work</a>
+      <a routerLink="/architecture">Reference platform</a>
+    </div>
+  </div>
+</section>

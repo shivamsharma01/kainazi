@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
 import { SiteContentService } from '../../core/services/site-content';
 import { BrandMark } from '../../shared/ui/brand-mark/brand-mark';
@@ -16,7 +16,7 @@ import { Button } from '../../shared/ui/button/button';
 
 @Component({
   selector: 'app-site-header',
-  imports: [BrandMark, Button, RouterLink],
+  imports: [BrandMark, Button, RouterLink, RouterLinkActive],
   templateUrl: './site-header.html',
   styleUrl: './site-header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -83,11 +83,6 @@ export class SiteHeader {
       }
     }
 
-    const alias: Record<string, string> = {
-      what: 'home',
-      engage: 'solutions',
-      why: 'about',
-    };
-    this.activeId.set(alias[current] ?? current);
+    this.activeId.set(current);
   }
 }

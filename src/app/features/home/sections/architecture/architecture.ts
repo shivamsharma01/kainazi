@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SiteContentService } from '../../../../core/services/site-content';
 import { ArchDiagram } from '../../../../shared/ui/arch-diagram/arch-diagram';
 import { MermaidDiagram } from '../../../../shared/ui/mermaid-diagram/mermaid-diagram';
@@ -7,7 +8,7 @@ import { Tag } from '../../../../shared/ui/tag/tag';
 
 @Component({
   selector: 'app-architecture',
-  imports: [SectionHeader, Tag, ArchDiagram, MermaidDiagram],
+  imports: [SectionHeader, Tag, ArchDiagram, MermaidDiagram, RouterLink],
   templateUrl: './architecture.html',
   styleUrl: './architecture.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

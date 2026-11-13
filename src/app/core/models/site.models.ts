@@ -1,16 +1,8 @@
-export type NavSectionId =
-  | 'home'
-  | 'services'
-  | 'expertise'
-  | 'solutions'
-  | 'architecture'
-  | 'industries'
-  | 'about'
-  | 'contact';
-
 export interface NavLink {
-  readonly id: NavSectionId;
+  readonly id: string;
   readonly label: string;
+  readonly path: string;
+  readonly fragment?: string;
   readonly cta?: boolean;
 }
 
@@ -43,6 +35,25 @@ export interface TechCategory {
 export interface ArchitectureNode {
   readonly title: string;
   readonly subtitle: string;
+}
+
+export interface WorkImage {
+  readonly src: string;
+  readonly alt: string;
+  readonly caption: string;
+}
+
+export interface ShippedWork {
+  readonly id: string;
+  readonly kicker: string;
+  readonly title: string;
+  readonly summary: string;
+  readonly outcome: string;
+  readonly points: readonly string[];
+  readonly stack: readonly string[];
+  readonly url: string;
+  readonly images: readonly WorkImage[];
+  readonly layers: readonly ArchitectureNode[][];
 }
 
 export interface SolutionDesign {

@@ -3,11 +3,10 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InquiryService } from '../../../../core/services/inquiry';
 import { SiteContentService } from '../../../../core/services/site-content';
 import { Button } from '../../../../shared/ui/button/button';
-import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, SectionHeader, Button],
+  imports: [ReactiveFormsModule, Button],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

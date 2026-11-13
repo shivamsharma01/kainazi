@@ -18,6 +18,7 @@ import {
   NAV_LINKS,
   PILLARS,
   SERVICES,
+  SHIPPED_WORK,
   SOLUTIONS,
   TEAM,
   TECH_CATEGORIES,
@@ -43,6 +44,7 @@ export class SiteContentService {
   readonly pillars = PILLARS;
   readonly services = SERVICES;
   readonly techCategories = TECH_CATEGORIES;
+  readonly shippedWork = SHIPPED_WORK;
   readonly solutions = SOLUTIONS;
   readonly engagementModels = ENGAGEMENT_MODELS;
   readonly industries = INDUSTRIES;

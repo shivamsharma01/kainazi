@@ -1,15 +1,10 @@
-<section class="section alt" id="contact">
+<section class="contact" id="contact">
   <div class="wrap grid">
-    <div>
-      <app-section-header
-        eyebrow="Contact"
-        title="Have a programme in mind?"
-        lead="Tell us what you are trying to build, modernize, or integrate. We will respond with questions, not a generic pitch deck."
-      />
-      <p class="fine">
-        Prefer email?
-        <a [href]="'mailto:' + content.email">{{ content.email }}</a>
-      </p>
+    <div class="intro">
+      <p class="eyebrow">Contact</p>
+      <h2>Start a conversation.</h2>
+      <p>Tell us the system. We reply with questions, not a pitch deck.</p>
+      <a [href]="'mailto:' + content.email">{{ content.email }}</a>
     </div>
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <div class="field">

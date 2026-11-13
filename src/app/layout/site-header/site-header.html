@@ -15,17 +15,26 @@
             appButton
             variant="secondary"
             class="nav-cta"
-            routerLink="/"
-            [fragment]="link.id"
+            [routerLink]="link.path"
+            [fragment]="link.fragment"
+            (click)="closeMenu()"
+          >
+            {{ link.label }}
+          </a>
+        } @else if (link.fragment) {
+          <a
+            [routerLink]="link.path"
+            [fragment]="link.fragment"
+            [class.active]="onHome() && activeId() === link.id"
             (click)="closeMenu()"
           >
             {{ link.label }}
           </a>
         } @else {
           <a
-            routerLink="/"
-            [fragment]="link.id"
-            [class.active]="onHome() && activeId() === link.id"
+            [routerLink]="link.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
             (click)="closeMenu()"
           >
             {{ link.label }}

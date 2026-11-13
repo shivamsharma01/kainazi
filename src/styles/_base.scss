@@ -62,7 +62,7 @@ textarea {
 }
 
 .wrap {
-  width: min(var(--wrap), calc(100% - 40px));
+  width: min(var(--wrap), calc(100% - clamp(32px, 4vw, 72px)));
   margin-inline: auto;
 }
 

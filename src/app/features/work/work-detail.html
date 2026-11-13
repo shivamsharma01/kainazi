@@ -1,0 +1,98 @@
+<section class="section detail">
+  <div class="wrap">
+    <a class="back" routerLink="/work">All work</a>
+
+    @if (product(); as item) {
+      <p class="eyebrow">{{ item.kicker }}</p>
+      <h1>{{ item.title }}</h1>
+      <p class="lead">{{ item.summary }}</p>
+
+      <div class="shots">
+        @for (image of item.images; track image.src) {
+          <figure>
+            <img [src]="image.src" [alt]="image.alt" />
+            <figcaption>{{ image.caption }}</figcaption>
+          </figure>
+        }
+      </div>
+
+      <ul class="points">
+        @for (point of item.points; track point) {
+          <li>{{ point }}</li>
+        }
+      </ul>
+
+      <div class="approach">
+        @for (tag of item.stack; track tag) {
+          <app-tag>{{ tag }}</app-tag>
+        }
+      </div>
+
+      <app-arch-diagram [layers]="item.layers" />
+
+      <p class="outcome"><strong>Outcome.</strong> {{ item.outcome }}</p>
+      <div class="actions">
+        <a appButton variant="secondary" [href]="item.url" target="_blank" rel="noopener">Open the live site</a>
+        <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+      </div>
+    } @else if (solution(); as item) {
+      <p class="eyebrow">{{ item.kicker }}</p>
+      <h1>{{ item.title }}</h1>
+      <p class="lead">{{ item.challenge }}</p>
+
+      <app-arch-diagram [layers]="item.layers" />
+
+      <div class="approach">
+        @for (tag of item.approach; track tag) {
+          <app-tag>{{ tag }}</app-tag>
+        }
+      </div>
+
+      <p class="outcome"><strong>Outcome.</strong> {{ item.outcome }}</p>
+
+      <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+    } @else if (study(); as item) {
+      <p class="eyebrow">Reference platform</p>
+      <h1>{{ item.title }}</h1>
+      <p class="lead">{{ item.openingLine }}</p>
+
+      <div class="facts">
+        <article>
+          <h2>Problem</h2>
+          <p>{{ item.problem }}</p>
+        </article>
+        <article>
+          <h2>Constraint</h2>
+          <p>{{ item.constraint }}</p>
+        </article>
+        <article>
+          <h2>What is running</h2>
+          <p>{{ item.asBuilt }}</p>
+        </article>
+      </div>
+
+      <p class="outcome"><strong>What the study examines.</strong> {{ item.documentationFocus }}</p>
+      <div class="actions">
+        <a appButton variant="secondary" routerLink="/architecture">See the full architecture</a>
+        <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+      </div>
+    } @else {
+      <h1>This page is not on the site.</h1>
+      <a routerLink="/work">Back to work</a>
+    }
+
+    @if (product() || solution() || study()) {
+      <div class="more">
+        <h2>More systems</h2>
+        <div class="more-grid">
+          @for (item of others(); track item.id) {
+            <a [routerLink]="['/work', item.id]">
+              <span>{{ item.kicker }}</span>
+              <strong>{{ item.title }}</strong>
+            </a>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

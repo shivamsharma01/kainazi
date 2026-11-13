@@ -11,6 +11,7 @@ import {
   ScopeCallout,
   ArchitectureNode,
   ServiceOffering,
+  ShippedWork,
   SolutionDesign,
   TeamRole,
   TechCategory,
@@ -24,14 +25,10 @@ export const COMPANY_SITE_URL = 'https://www.kainazi.com';
 export const BRAND_IMAGE = 'brand/kainazi-identity.jpeg';
 
 export const NAV_LINKS: readonly NavLink[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'services', label: 'Services' },
-  { id: 'expertise', label: 'Expertise' },
-  { id: 'solutions', label: 'Solutions' },
-  { id: 'architecture', label: 'Architecture' },
-  { id: 'industries', label: 'Industries' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact', cta: true },
+  { id: 'work', label: 'Work', path: '/work' },
+  { id: 'services', label: 'Services', path: '/', fragment: 'services' },
+  { id: 'approach', label: 'Approach', path: '/', fragment: 'approach' },
+  { id: 'contact', label: 'Contact', path: '/', fragment: 'contact', cta: true },
 ];
 
 export const PILLARS: readonly Pillar[] = [
@@ -176,6 +173,50 @@ export const TECH_CATEGORIES: readonly TechCategory[] = [
   { id: 'obs', label: 'Observability', items: ['Grafana', 'Kibana', 'Elasticsearch', 'Logstash'] },
   { id: 'qa', label: 'Testing', items: ['JUnit', 'Mockito', 'Cypress', 'Jasmine', 'Spock', 'Postman', 'SoapUI'] },
   { id: 'pm', label: 'Delivery', items: ['Jira', 'Azure DevOps', 'Confluence'] },
+];
+
+export const SHIPPED_WORK: readonly ShippedWork[] = [
+  {
+    id: 'gym',
+    kicker: 'Shipped · Fitness',
+    title: 'Gym platform',
+    summary:
+      'A multi-gym product: a public site for members, a staff console for the floor, and face readers on the door.',
+    outcome:
+      'Staff run memberships, payments, and door access from one place. A reader that drops offline catches up when it returns.',
+    points: [
+      'Each gym has its own public site and its own staff.',
+      'Members, plans, payments, attendance, and enquiries live in one console.',
+      'One face photo is stored for a member and written to every reader at that gym.',
+      'The gateway on the gym PC checks the reader against the server. Staff review anything that disagrees.',
+      'Door punches are stored on their own. They do not rewrite the member record.',
+    ],
+    stack: ['React', 'Spring Boot', 'MySQL', 'Cloudflare', 'WebSocket', 'Face readers'],
+    url: 'https://gym.kainazi.com',
+    images: [
+      {
+        src: '/work/gym-public.png',
+        alt: 'Public gym site with a visit booking call to action',
+        caption: 'Public site for a gym — plans, facilities, and a visit request.',
+      },
+      {
+        src: '/work/gym-staff.png',
+        alt: 'Staff console sign-in',
+        caption: 'Staff console for admins and platform operators.',
+      },
+    ],
+    layers: [
+      [
+        { title: 'Public site', subtitle: 'Plans, facilities, visit request' },
+        { title: 'Staff console', subtitle: 'Members, payments, attendance' },
+      ],
+      [{ title: 'Cloudflare', subtitle: 'React application' }],
+      [{ title: 'Spring Boot', subtitle: 'Tenants, memberships, sync' }],
+      [{ title: 'MySQL', subtitle: 'System of record' }],
+      [{ title: 'Gateway', subtitle: 'Windows service on the gym PC' }],
+      [{ title: 'Face readers', subtitle: 'Desired state, read-back, punches' }],
+    ],
+  },
 ];
 
 export const SOLUTIONS: readonly SolutionDesign[] = [

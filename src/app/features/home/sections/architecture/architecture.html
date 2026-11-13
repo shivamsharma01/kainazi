@@ -1,9 +1,9 @@
 <section class="section" id="architecture">
   <div class="wrap">
     <app-section-header
-      eyebrow="Flagship portfolio · Phase 0 complete"
-      title="Current architecture is the product."
-      lead="MCART as-built first. Case studies are problems extracted from that system — pick one when you are ready to write."
+      eyebrow="Reference platform"
+      title="The architecture, as it runs."
+      lead="Diagrams, services, and what is actually in code. Open a study when you want one problem in detail."
     />
 
     <ul class="legend" aria-label="Honesty labels">
@@ -219,28 +219,22 @@
 
     <!-- Case studies -->
     <div class="cases-head">
-      <p class="eyebrow">Modernization case studies</p>
-      <h3>Phase 0 done — pick a study to write next</h3>
-      <p class="lead">
-        Titles match the assessment. Start with as-built evidence, then proposed modernization.
-        Case Study 1 (checkout) is the recommended first write-up.
-      </p>
+      <p class="eyebrow">Studies</p>
+      <h3>Five problems in the platform</h3>
+      <p class="lead">Each card opens one study: the problem, the constraint, and what is running today.</p>
     </div>
 
     <div class="cases">
       @for (study of content.caseStudies; track study.id; let i = $index) {
-        <article class="case">
+        <a class="case" [routerLink]="['/work', study.id]">
           <div class="case-top">
-            <span class="status">{{ statusLabel(study.status) }}</span>
-            <span class="case-num">Case Study {{ i + 1 }}</span>
+            <span class="status">Study</span>
+            <span class="case-num">0{{ i + 1 }}</span>
           </div>
           <h4>{{ study.title }}</h4>
-          <p class="opening">“{{ study.openingLine }}”</p>
-          <p>{{ study.problem }}</p>
-          <p><strong>Constraint.</strong> {{ study.constraint }}</p>
-          <p class="as-built"><strong>As-built.</strong> {{ study.asBuilt }}</p>
-          <p><strong>Write next.</strong> {{ study.documentationFocus }}</p>
-        </article>
+          <p class="opening">{{ study.openingLine }}</p>
+          <span class="more">Read the study</span>
+        </a>
       }
     </div>
   </div>

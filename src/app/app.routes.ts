@@ -7,6 +7,22 @@ export const routes: Routes = [
     title: 'Kainazi Technology Solutions',
   },
   {
+    path: 'work',
+    loadComponent: () => import('./features/work/work-index').then((m) => m.WorkIndex),
+    title: 'Work | Kainazi',
+  },
+  {
+    path: 'work/:id',
+    loadComponent: () => import('./features/work/work-detail').then((m) => m.WorkDetail),
+    title: 'Work | Kainazi',
+  },
+  {
+    path: 'architecture',
+    loadComponent: () =>
+      import('./features/home/sections/architecture/architecture').then((m) => m.Architecture),
+    title: 'Architecture | Kainazi',
+  },
+  {
     path: 'privacy-policy',
     loadComponent: () =>
       import('./features/legal/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy),

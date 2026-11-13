@@ -1,29 +1,17 @@
-<section class="section alt" id="services">
+<section class="section" id="services">
   <div class="wrap">
-    <app-section-header
-      eyebrow="Services"
-      title="Six offerings. No filler."
-      lead="We sell engineering work you can ship — not a catalogue of every tool we have touched."
-    />
+    <div class="split">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2>What we take on.</h2>
+      </div>
+      <p>Six kinds of work. We scope the one that matches the risk, then the engineers do it.</p>
+    </div>
     <div class="grid">
       @for (service of content.services; track service.id) {
-        <article class="svc" [class.featured]="service.featured">
-          <app-icon [name]="service.icon" />
-          @if (service.badge) {
-            <span class="mark">{{ service.badge }}</span>
-          }
+        <article>
           <h3>{{ service.title }}</h3>
           <p>{{ service.summary }}</p>
-          <ul>
-            @for (point of service.points; track point) {
-              <li>{{ point }}</li>
-            }
-          </ul>
-          <div class="tags">
-            @for (tag of service.tags; track tag) {
-              <app-tag>{{ tag }}</app-tag>
-            }
-          </div>
         </article>
       }
     </div>
