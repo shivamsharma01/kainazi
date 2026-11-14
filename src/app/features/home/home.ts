@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { About } from './sections/about/about';
+import { Clients } from './sections/clients/clients';
 import { Contact } from './sections/contact/contact';
 import { Engagement } from './sections/engagement/engagement';
 import { Hero } from './sections/hero/hero';
@@ -8,7 +9,7 @@ import { Work } from './sections/work/work';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Work, Services, Engagement, About, Contact],
+  imports: [Hero, Work, Services, Engagement, About, Clients, Contact],
   templateUrl: './home.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

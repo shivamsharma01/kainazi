@@ -45,7 +45,7 @@ export class SiteContentService {
   readonly services = SERVICES;
   readonly techCategories = TECH_CATEGORIES;
   readonly shippedWork = SHIPPED_WORK;
-  readonly solutions = SOLUTIONS;
+  readonly solutions = SOLUTIONS.filter((item) => item.stage !== 'hidden');
   readonly engagementModels = ENGAGEMENT_MODELS;
   readonly industries = INDUSTRIES;
   readonly team = TEAM;

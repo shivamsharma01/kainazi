@@ -3,18 +3,18 @@
     <app-section-header
       eyebrow="Reference platform"
       title="The architecture, as it runs."
-      lead="Diagrams, services, and what is actually in code. Open a study when you want one problem in detail."
+      lead="Diagrams and the services that are actually in the code. Open a note if you want one problem in detail."
     />
 
-    <ul class="legend" aria-label="Honesty labels">
+    <ul class="legend" aria-label="What the marks mean">
       <li><span class="dot live"></span> In code</li>
-      <li><span class="dot intent"></span> Design intent (diagrams / docs only)</li>
+      <li><span class="dot intent"></span> Drawn or written, not in the code</li>
       <li><span class="dot none"></span> Not planned</li>
     </ul>
 
     <!-- A. Executive brief -->
     <div class="brief">
-      <p class="eyebrow">A · Executive brief</p>
+      <p class="eyebrow">Short version</p>
       <p><strong>{{ content.flagshipExecBrief.what }}</strong> {{ content.flagshipExecBrief.covers }}</p>
       <p>{{ content.flagshipExecBrief.style }}</p>
       <p class="honesty">{{ content.flagshipExecBrief.honesty }}</p>
@@ -35,7 +35,7 @@
       <div class="diagrams-head">
         <div>
           <p class="eyebrow">As-built diagrams</p>
-          <h3 class="subhead">Live architecture — not design intent</h3>
+          <h3 class="subhead">What is running, not what we once drew</h3>
         </div>
         <button type="button" class="toggle" (click)="toggleDiagramSet()">
           {{ showAllDiagrams() ? 'Show priority only' : 'Show all diagrams' }}
@@ -66,7 +66,7 @@
     </div>
 
     <!-- Guide chapters B, D–I -->
-    <h3 class="subhead">As-built guide</h3>
+    <h3 class="subhead">How it is built</h3>
     <div class="chapters">
       @for (chapter of content.flagshipGuideChapters; track chapter.id) {
         <article class="chapter">
@@ -126,7 +126,7 @@
       <div class="product-copy">
         <p class="eyebrow">Domain status</p>
         <h3>Layers</h3>
-        <p>What is running versus design-intent boxes from older diagrams.</p>
+        <p>What is running, and what older diagrams still show.</p>
       </div>
       <ol class="layers">
         @for (layer of content.flagshipLayers; track layer.name) {
@@ -168,7 +168,7 @@
     </ul>
 
     @if (designIntentCapabilities().length) {
-      <h3 class="subhead muted-head">Design intent only — not in code</h3>
+      <h3 class="subhead muted-head">On the diagram only</h3>
       <ul class="capabilities intent-caps">
         @for (capability of designIntentCapabilities(); track capability.name) {
           <li>
@@ -182,9 +182,9 @@
     <!-- J. Errata / scope -->
     <div class="scope">
       <p class="eyebrow">J · Not in code</p>
-      <h3>Fulfilment and other diagram leftovers</h3>
+      <h3>Things older diagrams still name</h3>
       <p class="lead">
-        Named in older enterprise diagrams. Not Phase 0 deliverables. Do not treat as live.
+        These names are on older diagrams. They are not built. Do not treat them as live.
       </p>
       <div class="scope-grid">
         @for (item of content.flagshipScopeCallouts; track item.name) {
@@ -200,7 +200,7 @@
     <!-- Demos -->
     <div class="demos-head">
       <p class="eyebrow">Demos from current behavior</p>
-      <h3>Prove the platform before writing a case study</h3>
+      <h3>Demos from the code that exists</h3>
     </div>
     <div class="demos">
       @for (demo of content.flagshipDemos; track demo.id) {
@@ -220,20 +220,20 @@
     <!-- Case studies -->
     <div class="cases-head">
       <p class="eyebrow">Studies</p>
-      <h3>Five problems in the platform</h3>
-      <p class="lead">Each card opens one study: the problem, the constraint, and what is running today.</p>
+      <h3>Five problems in this platform</h3>
+      <p class="lead">Each card is one problem: what is wrong, what we cannot change yet, and what is running.</p>
     </div>
 
     <div class="cases">
       @for (study of content.caseStudies; track study.id; let i = $index) {
         <a class="case" [routerLink]="['/work', study.id]">
           <div class="case-top">
-            <span class="status">Study</span>
+            <span class="status">Note</span>
             <span class="case-num">0{{ i + 1 }}</span>
           </div>
           <h4>{{ study.title }}</h4>
           <p class="opening">{{ study.openingLine }}</p>
-          <span class="more">Read the study</span>
+          <span class="more">Read the note</span>
         </a>
       }
     </div>

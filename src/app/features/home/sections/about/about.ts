@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { SiteContentService } from '../../../../core/services/site-content';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -7,6 +6,4 @@ import { SiteContentService } from '../../../../core/services/site-content';
   styleUrl: './about.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class About {
-  readonly content = inject(SiteContentService);
-}
+export class About {}

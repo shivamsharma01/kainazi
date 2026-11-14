@@ -1,0 +1,44 @@
+.row {
+  display: grid;
+  grid-template-columns: minmax(280px, 520px) 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+a {
+  display: block;
+  background: var(--white);
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid var(--line);
+  line-height: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--navy);
+  margin: 0 0 14px;
+}
+
+.row > div > p:last-child {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+@media (max-width: 800px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

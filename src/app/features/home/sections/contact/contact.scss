@@ -44,6 +44,7 @@ form {
   gap: 12px;
   padding: 24px;
   background: var(--white);
+  color: var(--ink);
   box-shadow: var(--shadow);
 }
 
@@ -66,9 +67,16 @@ label {
 input,
 select,
 textarea {
+  color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--line);
   padding: 12px;
+  color-scheme: light;
+}
+
+select option {
+  color: var(--ink);
+  background: var(--white);
 }
 
 input:focus,

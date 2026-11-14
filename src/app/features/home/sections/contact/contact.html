@@ -3,7 +3,7 @@
     <div class="intro">
       <p class="eyebrow">Contact</p>
       <h2>Start a conversation.</h2>
-      <p>Tell us the system. We reply with questions, not a pitch deck.</p>
+      <p>Tell us what you are trying to do. We will write back with questions, not a deck.</p>
       <a [href]="'mailto:' + content.email">{{ content.email }}</a>
     </div>
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
@@ -40,14 +40,14 @@
         <textarea
           id="message"
           formControlName="message"
-          placeholder="What are you trying to build, modernize, or integrate?"
+          placeholder="What do you want to build, change, or connect?"
         ></textarea>
       </div>
       @if (status(); as message) {
         <p class="form-msg" [class.err]="message.kind === 'err'" role="status">{{ message.text }}</p>
       }
       <div class="field full">
-        <button appButton variant="primary" type="submit">Discuss the work</button>
+        <button appButton variant="primary" type="submit">Send</button>
       </div>
     </form>
   </div>

@@ -49,7 +49,8 @@ export interface ShippedWork {
   readonly title: string;
   readonly summary: string;
   readonly outcome: string;
-  readonly points: readonly string[];
+  readonly problem: readonly string[];
+  readonly solution: readonly string[];
   readonly stack: readonly string[];
   readonly url: string;
   readonly images: readonly WorkImage[];
@@ -64,6 +65,8 @@ export interface SolutionDesign {
   readonly approach: readonly string[];
   readonly outcome: string;
   readonly layers: readonly ArchitectureNode[][];
+  /** studying = shown as in progress. hidden = kept in source, not shown on the site. */
+  readonly stage?: 'studying' | 'hidden';
 }
 
 export interface EngagementModel {

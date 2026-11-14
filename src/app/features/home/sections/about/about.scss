@@ -31,20 +31,26 @@ h2 {
   max-width: 36ch;
 }
 
-.roles {
+.points {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 2.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.roles > div {
+.points > div {
   padding: 22px 20px 0 0;
 }
 
-.roles > div + div {
+.points > div + div {
   padding-left: 20px;
   border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.points p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  max-width: 28ch;
 }
 
 span {
@@ -65,29 +71,11 @@ strong {
 
 @media (max-width: 900px) {
   .split,
-  .roles {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .roles > div:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .roles > div:nth-child(n + 3) {
-    margin-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-    padding-top: 18px;
-  }
-}
-
-@media (max-width: 560px) {
-  .split,
-  .roles {
+  .points {
     grid-template-columns: 1fr;
   }
 
-  .roles > div + div {
+  .points > div + div {
     margin-top: 18px;
     padding-left: 0;
     border-left: 0;

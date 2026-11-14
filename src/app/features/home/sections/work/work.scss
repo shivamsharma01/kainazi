@@ -13,12 +13,12 @@
 h2 {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
-  letter-spacing: -0.03em;
-  line-height: 1.02;
+  font-size: clamp(3.4rem, 6.5vw, 5.6rem);
+  letter-spacing: -0.035em;
+  line-height: 0.98;
   color: var(--navy);
   margin: 0;
-  max-width: 12ch;
+  max-width: 14ch;
 }
 
 .split > p {
@@ -30,12 +30,11 @@ h2 {
 
 .shipped {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  min-height: 420px;
+  grid-template-columns: 0.8fr 1.2fr;
+  min-height: 460px;
   margin-bottom: 12px;
   background: #0b0c0b;
   color: var(--white);
-  text-decoration: none;
   overflow: hidden;
 }
 
@@ -51,6 +50,37 @@ h2 {
   justify-content: flex-end;
   gap: 12px;
   padding: 32px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.shot {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  padding: 16px;
+  background: #e7eee4;
+}
+
+.view-site {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 16px 22px;
+  background: #c8f542;
+  color: #14180f;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  text-align: center;
+}
+
+.view-site:hover {
+  filter: brightness(1.05);
 }
 
 .shipped .kicker,
@@ -82,14 +112,17 @@ h2 {
 
 .shipped img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left center;
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center top;
+  background: #e7eee4;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
@@ -114,13 +147,12 @@ h2 {
 }
 
 .feature {
-  grid-row: span 3;
   justify-content: space-between;
   background: var(--navy);
   color: var(--white);
   border: 0;
   padding: 32px;
-  min-height: 100%;
+  min-height: 280px;
 }
 
 .kicker {
@@ -209,7 +241,7 @@ h2 {
   }
 
   .shipped img {
-    height: 280px;
+    height: 240px;
   }
 
   .feature {

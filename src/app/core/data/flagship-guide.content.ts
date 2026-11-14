@@ -11,7 +11,7 @@ export const FLAGSHIP_EXEC_BRIEF = {
   style:
     'Independently deployable services: synchronous commerce path, asynchronous identity, catalogue, and email.',
   honesty: 'Mock payment — not a production PSP. Not a monolith. Not Kafka (GCP Pub/Sub).',
-  why: 'Shows we can design and operate distributed systems — not only CRUD apps.',
+  why: 'A working example of designing and running a distributed system.',
 } as const;
 
 export const FLAGSHIP_GUIDE_CHAPTERS: readonly GuideChapter[] = [

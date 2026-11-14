@@ -7,20 +7,34 @@
       <h1>{{ item.title }}</h1>
       <p class="lead">{{ item.summary }}</p>
 
+      <div class="story">
+        <article>
+          <h2>Problem</h2>
+          <ul>
+            @for (line of item.problem; track line) {
+              <li>{{ line }}</li>
+            }
+          </ul>
+        </article>
+        <article>
+          <h2>Solution</h2>
+          <ul>
+            @for (line of item.solution; track line) {
+              <li>{{ line }}</li>
+            }
+          </ul>
+        </article>
+      </div>
+
       <div class="shots">
         @for (image of item.images; track image.src) {
           <figure>
             <img [src]="image.src" [alt]="image.alt" />
             <figcaption>{{ image.caption }}</figcaption>
+            <a class="view-site" [href]="item.url" target="_blank" rel="noopener">Click to view website</a>
           </figure>
         }
       </div>
-
-      <ul class="points">
-        @for (point of item.points; track point) {
-          <li>{{ point }}</li>
-        }
-      </ul>
 
       <div class="approach">
         @for (tag of item.stack; track tag) {
@@ -33,24 +47,26 @@
       <p class="outcome"><strong>Outcome.</strong> {{ item.outcome }}</p>
       <div class="actions">
         <a appButton variant="secondary" [href]="item.url" target="_blank" rel="noopener">Open the live site</a>
-        <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+        <a appButton variant="primary" routerLink="/" fragment="contact">Talk about a system like this</a>
       </div>
     } @else if (solution(); as item) {
       <p class="eyebrow">{{ item.kicker }}</p>
       <h1>{{ item.title }}</h1>
       <p class="lead">{{ item.challenge }}</p>
 
-      <app-arch-diagram [layers]="item.layers" />
+      @if (item.stage !== 'studying') {
+        <app-arch-diagram [layers]="item.layers" />
 
-      <div class="approach">
-        @for (tag of item.approach; track tag) {
-          <app-tag>{{ tag }}</app-tag>
-        }
-      </div>
+        <div class="approach">
+          @for (tag of item.approach; track tag) {
+            <app-tag>{{ tag }}</app-tag>
+          }
+        </div>
 
-      <p class="outcome"><strong>Outcome.</strong> {{ item.outcome }}</p>
+        <p class="outcome"><strong>Outcome.</strong> {{ item.outcome }}</p>
+      }
 
-      <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+      <a appButton variant="primary" routerLink="/" fragment="contact">Talk about a system like this</a>
     } @else if (study(); as item) {
       <p class="eyebrow">Reference platform</p>
       <h1>{{ item.title }}</h1>
@@ -71,10 +87,10 @@
         </article>
       </div>
 
-      <p class="outcome"><strong>What the study examines.</strong> {{ item.documentationFocus }}</p>
+      <p class="outcome"><strong>In this note.</strong> {{ item.documentationFocus }}</p>
       <div class="actions">
         <a appButton variant="secondary" routerLink="/architecture">See the full architecture</a>
-        <a appButton variant="primary" routerLink="/" fragment="contact">Discuss a system like this</a>
+        <a appButton variant="primary" routerLink="/" fragment="contact">Talk about a system like this</a>
       </div>
     } @else {
       <h1>This page is not on the site.</h1>

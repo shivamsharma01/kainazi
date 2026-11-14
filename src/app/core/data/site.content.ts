@@ -36,36 +36,32 @@ export const PILLARS: readonly Pillar[] = [
     id: 'build',
     index: '01',
     title: 'Build',
-    summary:
-      'Custom software and full-stack systems — web applications, portals, SaaS platforms, and backend services designed for growth.',
-    outcome: 'Secure APIs and independently deployable services',
+    summary: 'Web applications, portals, and the backend services behind them.',
+    outcome: 'Apps and APIs you can change later',
     tone: 'navy',
   },
   {
     id: 'integrate',
     index: '02',
     title: 'Integrate',
-    summary:
-      'APIs, events, and data pipelines that connect the systems you already operate — across channels, partners, and records of truth.',
-    outcome: 'Resilient, observable integration boundaries',
+    summary: 'APIs and events that connect the systems you already run.',
+    outcome: 'Connect the systems you already run',
     tone: 'green',
   },
   {
     id: 'modernize',
     index: '03',
     title: 'Modernize',
-    summary:
-      'Evolve legacy Java and monolith estates into modular, cloud-ready architectures without suspending the business.',
-    outcome: 'Incremental change with contained risk',
+    summary: 'Move an older Java system forward without stopping the business on it.',
+    outcome: 'Move the old system without stopping it',
     tone: 'orange',
   },
   {
     id: 'scale',
     index: '04',
     title: 'Scale',
-    summary:
-      'Cloud platforms, automation, and operational discipline so the system can be deployed, observed, and changed at volume.',
-    outcome: 'Repeatable delivery and production confidence',
+    summary: 'Cloud, pipelines, and enough visibility to change production safely.',
+    outcome: 'Deploy it, watch it, change it again',
     tone: 'sky',
   },
 ];
@@ -74,7 +70,7 @@ export const SERVICES: readonly ServiceOffering[] = [
   {
     id: 'modernization',
     title: 'Application modernization',
-    summary: 'Modernize legacy applications without disrupting the operating model.',
+    summary: 'Move an old application forward without stopping the business that runs on it.',
     points: [
       'Monolith to modular services',
       'Legacy Java modernization',
@@ -89,8 +85,8 @@ export const SERVICES: readonly ServiceOffering[] = [
   },
   {
     id: 'custom',
-    title: 'Custom software development',
-    summary: 'Enterprise web applications, customer portals, internal tools, and SaaS platforms.',
+    title: 'Custom software',
+    summary: 'Web applications, customer portals, internal tools, and SaaS products.',
     points: [
       'Backend systems and microservices',
       'Customer and operations portals',
@@ -102,7 +98,7 @@ export const SERVICES: readonly ServiceOffering[] = [
   {
     id: 'cloud',
     title: 'Cloud and DevOps',
-    summary: 'Deploy and operate cloud-native applications with automated infrastructure.',
+    summary: 'Put the application on the cloud, and make deploys and infrastructure repeatable.',
     points: [
       'Cloud architecture and migration',
       'CI/CD, Docker, and Kubernetes',
@@ -113,8 +109,8 @@ export const SERVICES: readonly ServiceOffering[] = [
   },
   {
     id: 'integration',
-    title: 'API and integration engineering',
-    summary: 'Connect applications, payments, and partner platforms through APIs and events.',
+    title: 'APIs and integration',
+    summary: 'Connect applications, payments, and the other systems they depend on.',
     points: [
       'REST, SOAP, GraphQL, and gRPC',
       'Kafka, queues, and event-driven design',
@@ -124,27 +120,14 @@ export const SERVICES: readonly ServiceOffering[] = [
     icon: 'nodes',
   },
   {
-    id: 'data',
-    title: 'Data engineering and analytics',
-    summary: 'Pipelines, migrations, and analytics platforms that turn operational events into decisions.',
+    id: 'testing',
+    title: 'Testing',
+    summary: 'Unit tests and integration tests, written next to the features they cover.',
     points: [
-      'Data pipelines and processing',
-      'Database modernization',
-      'NoSQL and warehouse architecture',
+      'Unit tests beside the code',
+      'Integration tests for the main paths',
     ],
-    tags: ['BigQuery', 'MongoDB', 'Cassandra'],
-    icon: 'chart',
-  },
-  {
-    id: 'quality',
-    title: 'Quality engineering',
-    summary: 'Automation in the delivery pipeline — not testing as an afterthought.',
-    points: [
-      'API, integration, and end-to-end tests',
-      'Regression and performance',
-      'CI/CD test automation',
-    ],
-    tags: ['JUnit', 'Cypress', 'Postman'],
+    tags: ['JUnit', 'Mockito'],
     icon: 'shield',
   },
 ];
@@ -181,40 +164,40 @@ export const SHIPPED_WORK: readonly ShippedWork[] = [
     kicker: 'Shipped · Fitness',
     title: 'Gym platform',
     summary:
-      'A multi-gym product: a public site for members, a staff console for the floor, and face readers on the door.',
+      'Each gym has its own admin console. Staff register members, set the dates, and send a face photograph to the biometric devices on the door.',
     outcome:
-      'Staff run memberships, payments, and door access from one place. A reader that drops offline catches up when it returns.',
-    points: [
-      'Each gym has its own public site and its own staff.',
-      'Members, plans, payments, attendance, and enquiries live in one console.',
-      'One face photo is stored for a member and written to every reader at that gym.',
-      'The gateway on the gym PC checks the reader against the server. Staff review anything that disagrees.',
-      'Door punches are stored on their own. They do not rewrite the member record.',
+      'The owner can open the console from anywhere with a network connection. A biometric device that was offline picks up the member changes when it reconnects.',
+    problem: [
+      'A new face, or a change to a membership date, had to be entered on the biometric device. The owner did that by hand, at the machine.',
+      'The devices did not sync themselves. With more than one biometric device, the same person had to be copied from machine to machine.',
+      'TimeWatch, the software already in the gym, ran on site and could not send a photograph from the computer onto a biometric device.',
+      'More than 1,200 people were registered, and about 400 to 500 had an active membership. The records were paper files and registers, so it was hard to see who was about to expire and who already had.',
+      'The owner has other businesses and little time on the gym floor. He wanted to follow this one from somewhere else.',
+      'He wanted WhatsApp reminders before a membership ends, and a personal offer for a member who has not come in for three months.',
     ],
-    stack: ['React', 'Spring Boot', 'MySQL', 'Cloudflare', 'WebSocket', 'Face readers'],
+    solution: [
+      'Each gym has its own admin console. Staff add the member, set the dates, and keep one photograph there.',
+      'That record is sent to every biometric device at the gym. A device that is offline picks the changes up when it reconnects.',
+      'Memberships, expiries, payments, and attendance are in the console. The owner can open it from anywhere with a network connection.',
+      'The console holds who is about to expire and who has not come in for three months. That is the list a WhatsApp renewal reminder or a personal offer would be sent from.',
+      'Punches from the door are stored on their own. They do not change the member record. If a biometric device and the console disagree, staff look at it.',
+    ],
+    stack: ['React', 'Spring Boot', 'MySQL', 'Cloudflare', 'WebSocket', 'Biometric devices'],
     url: 'https://gym.kainazi.com',
     images: [
       {
-        src: '/work/gym-public.png',
-        alt: 'Public gym site with a visit booking call to action',
-        caption: 'Public site for a gym — plans, facilities, and a visit request.',
-      },
-      {
-        src: '/work/gym-staff.png',
-        alt: 'Staff console sign-in',
-        caption: 'Staff console for admins and platform operators.',
+        src: '/work/gym-console.png',
+        alt: 'Gym admin console showing members, memberships, and attendance',
+        caption: 'The admin console for one gym. Staff sign in. Members do not.',
       },
     ],
     layers: [
-      [
-        { title: 'Public site', subtitle: 'Plans, facilities, visit request' },
-        { title: 'Staff console', subtitle: 'Members, payments, attendance' },
-      ],
+      [{ title: 'Admin console', subtitle: 'Members, payments, attendance' }],
       [{ title: 'Cloudflare', subtitle: 'React application' }],
       [{ title: 'Spring Boot', subtitle: 'Tenants, memberships, sync' }],
       [{ title: 'MySQL', subtitle: 'System of record' }],
       [{ title: 'Gateway', subtitle: 'Windows service on the gym PC' }],
-      [{ title: 'Face readers', subtitle: 'Desired state, read-back, punches' }],
+      [{ title: 'Biometric devices', subtitle: 'Face, dates, and punches' }],
     ],
   },
 ];
@@ -222,10 +205,11 @@ export const SHIPPED_WORK: readonly ShippedWork[] = [
 export const SOLUTIONS: readonly SolutionDesign[] = [
   {
     id: 'orders',
-    kicker: 'Retail · SaaS',
-    title: 'Enterprise order management',
+    kicker: 'In progress',
+    title: 'Ecommerce platform',
+    stage: 'studying',
     challenge:
-      'A growing business needs a scalable platform to manage orders across storefront, warehouse, and payment systems — without a single deployment locking the entire operation.',
+      'We are going through an ecommerce platform in detail. The architecture and the demos are still being put together from that.',
     approach: [
       'Microservices',
       'Spring Boot',
@@ -237,8 +221,7 @@ export const SOLUTIONS: readonly SolutionDesign[] = [
       'Kubernetes',
       'AWS',
     ],
-    outcome:
-      'An architecture designed for independent deployment, asynchronous processing, and subsequent cloud expansion — not a single-box rewrite.',
+    outcome: 'We are still reading. The architecture and demos come next.',
     layers: [
       [{ title: 'Angular', subtitle: 'Storefront and operations console' }],
       [{ title: 'API gateway', subtitle: 'Authentication, routing, limits' }],
@@ -257,6 +240,7 @@ export const SOLUTIONS: readonly SolutionDesign[] = [
   },
   {
     id: 'fintech',
+    stage: 'hidden',
     kicker: 'Financial services',
     title: 'Banking integration platform',
     challenge:
@@ -278,10 +262,10 @@ export const SOLUTIONS: readonly SolutionDesign[] = [
     kicker: 'Platform',
     title: 'Cloud-native application',
     challenge:
-      'The product operates on a single virtual machine. The next step is repeatable environments, independent services, and visibility in production.',
+      'The product runs on one virtual machine. Next is environments you can rebuild, services you can deploy on their own, and a clear view of production.',
     approach: ['Angular / React', 'Spring Boot', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Grafana', 'Elasticsearch'],
     outcome:
-      'A path from workstation to cluster: infrastructure as code, pipelines, and observability as part of the system — not a later programme.',
+      'From a laptop to a cluster: infrastructure as code, pipelines, and logs and metrics as part of the system, not a project we do later.',
     layers: [
       [{ title: 'Angular / React', subtitle: 'Product interface' }],
       [{ title: 'Spring Boot', subtitle: 'APIs and domain' }],
@@ -293,6 +277,7 @@ export const SOLUTIONS: readonly SolutionDesign[] = [
   },
   {
     id: 'data',
+    stage: 'hidden',
     kicker: 'Analytics',
     title: 'Operational data platform',
     challenge:
@@ -312,23 +297,23 @@ export const SOLUTIONS: readonly SolutionDesign[] = [
 export const ENGAGEMENT_MODELS: readonly EngagementModel[] = [
   {
     title: 'Dedicated team',
-    summary: 'Experienced engineers embedded on your product. Suited to startups, SaaS, and product companies.',
+    summary: 'Engineers on your product for as long as you need them. A good fit for startups and product companies.',
   },
   {
     title: 'Project-based delivery',
-    summary: 'End-to-end delivery of a defined application, platform, or capability — scoped, built, and handed over.',
+    summary: 'A defined piece of software. We scope it, build it, and hand it over.',
   },
   {
     title: 'Modernization',
-    summary: 'Legacy applications, architecture, and infrastructure — evolved in slices, not a single-cutover rewrite.',
+    summary: 'We change the old system in slices, not in one rewrite and a cutover weekend.',
   },
   {
     title: 'Cloud and DevOps',
-    summary: 'Architecture, migration, Kubernetes, CI/CD, and infrastructure automation as a focused engagement.',
+    summary: 'A focused piece of work: architecture, migration, Kubernetes, pipelines, or infrastructure automation.',
   },
   {
     title: 'APIs and integration',
-    summary: 'Connect applications and third-party platforms through APIs and event-driven integrations.',
+    summary: 'We connect your applications and the outside systems they depend on.',
   },
 ];
 
@@ -551,57 +536,57 @@ export const FLAGSHIP_AS_BUILT_DIAGRAM: readonly ArchitectureNode[][] = [
 export const CASE_STUDY_PLACEHOLDERS: readonly CaseStudyPlaceholder[] = [
   {
     id: 'checkout-consistency',
-    title: 'Modernizing Distributed Checkout for Resilient Order Processing',
+    title: 'Checkout when one of the services fails',
     problem: 'Checkout spans inventory, payment, and order stores without an atomic guarantee.',
     constraint: 'Sync orchestration in order service; only payment-fail → inventory increment is compensated.',
     asBuilt: 'OrderService.checkout · RestClient chain · mock payment · no idempotency keys',
     documentationFocus: 'Failure windows, @Transactional scope, and the proposed orchestration saga.',
     status: 'ready',
     openingLine:
-      'Checkout already spans five services and three databases; today only one failure path is compensated.',
+      'Checkout already crosses five services and three databases. If something fails, only the payment-failure path is undone.',
   },
   {
     id: 'catalog-inventory-search',
-    title: 'Keeping Catalog, Inventory, and Search Consistent Without a Shared Database',
+    title: 'Catalog, stock, and search staying in step',
     problem: 'Separated stores are correct — but catalogue events can overwrite live stock.',
     constraint: 'Product outbox fans out to indexer and inventory; UPDATE calls inventory init.',
     asBuilt: 'Firestore outbox · product-events · OpenSearch · inventory.available_qty',
     documentationFocus: 'Stock ownership rules and what must never be overwritten after checkout.',
     status: 'ready',
     openingLine:
-      'Catalog, stock, and search are correctly separated stores — but catalog events can overwrite live stock.',
+      'Catalog, stock, and search live in separate stores, which is what we want. A catalog update can still overwrite the stock that is actually left.',
   },
   {
     id: 'search-pipeline',
-    title: 'Hardening the Product → Index Pipeline for At-Least-Once Delivery',
+    title: 'Getting product updates into search',
     problem: 'At-least-once delivery without DLQ or eventId in the published payload.',
     constraint: 'Outbox + Pub/Sub + version-aware indexer already work; hardening is the study.',
     asBuilt: 'product-indexer · reindex admin · OpenSearch products index',
     documentationFocus: 'Poison messages, DLQ, replay, and freshness under failure.',
     status: 'ready',
     openingLine:
-      'We already run an event-driven indexing pipeline; the case study is hardening delivery semantics, not inventing search.',
+      'Search is already filled from events. This note is about making that delivery safer, not about building search from scratch.',
   },
   {
     id: 'observability',
-    title: 'Making Resilience Visible — Observability and Failure Injection',
+    title: 'Seeing a failure when it happens',
     problem: 'Failures exist; traces, metrics, and controlled injection mostly do not.',
     constraint: 'Logs and K8s probes only; payment.mock.mode already supports demo faults.',
     asBuilt: 'Actuator probes · mock payment delay/fail',
     documentationFocus: 'Correlation, OpenTelemetry, and a demo fault surface without polluting domain code.',
     status: 'ready',
-    openingLine: 'Failures are real; visibility is not. We make the same architecture debuggable and demoable.',
+    openingLine: 'Things fail. We cannot always see why. This note is about traces, metrics, and a way to cause a fault on purpose.',
   },
   {
     id: 'cost-conscious-delivery',
-    title: 'Cost-Conscious Cloud-Native Delivery of a Multi-Service Platform',
+    title: 'Running the platform without leaving the cluster on',
     problem: 'Full GKE stack is credible and expensive if left always-on (~₹2,000/day).',
     constraint: 'Terraform, Helm, Gateway, and Cloud Build are real; local still leans on GCP.',
     asBuilt: 'asia-south2 GKE · mcart / mcart-gateway namespaces',
     documentationFocus: 'Compose/emulators, ephemeral demos, and a static portfolio that does not need the cluster.',
     status: 'ready',
     openingLine:
-      'The platform is cloud-native and expensive if left on; the case study is delivery strategy, not “using Kubernetes.”',
+      'The platform is real, and expensive if the cluster stays up all the time. This note is about how we run it.',
   },
 ];
 
@@ -610,7 +595,6 @@ export const INQUIRY_NEEDS: readonly InquiryNeed[] = [
   { value: 'Application modernization', label: 'Application modernization' },
   { value: 'Cloud and DevOps', label: 'Cloud and DevOps' },
   { value: 'API and integration', label: 'API and integration' },
-  { value: 'Data platform', label: 'Data platform' },
   { value: 'Dedicated team', label: 'Dedicated team' },
   { value: 'Architecture review', label: 'Architecture review' },
   { value: 'Something else', label: 'Something else' },

@@ -2,9 +2,9 @@
   <div class="wrap">
     <p class="eyebrow">Work</p>
     <div class="split">
-      <h1>Architectures you can open.</h1>
+      <h1>The work.</h1>
       <p>
-        The gym platform is in production. The other systems are architectures we can walk through. Client names stay in the conversation.
+        The gym console is live. We are going through an ecommerce platform now. The architecture and demos are still being written.
       </p>
     </div>
 
@@ -25,13 +25,13 @@
         <a [routerLink]="['/work', solution.id]">
           <span>{{ solution.kicker }}</span>
           <strong>{{ solution.title }}</strong>
-          <em>View architecture</em>
+          <em>{{ solution.stage === 'studying' ? 'Where this stands' : 'View architecture' }}</em>
         </a>
       }
     </div>
 
     <div class="studies-head">
-      <h2>Studies from the reference platform</h2>
+      <h2>Notes from a reference platform</h2>
       <a routerLink="/architecture">Full architecture</a>
     </div>
     <div class="studies">

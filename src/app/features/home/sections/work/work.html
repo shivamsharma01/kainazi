@@ -3,23 +3,24 @@
     <div class="split">
       <div>
         <p class="eyebrow">Work</p>
-        <h2>Systems we can walk through.</h2>
+        <h2>Work you can open.</h2>
       </div>
-      <p>
-        A gym platform in production, then the architectures behind orders, banking, cloud, and data.
-      </p>
+      <p>The gym console is live. We are still writing the ecommerce architecture.</p>
     </div>
 
     @for (product of content.shippedWork; track product.id) {
-      <a class="shipped" [routerLink]="['/work', product.id]">
-        <div class="shipped-copy">
+      <article class="shipped">
+        <a class="shipped-copy" [routerLink]="['/work', product.id]">
           <span class="kicker">{{ product.kicker }}</span>
           <strong>{{ product.title }}</strong>
           <p>{{ product.summary }}</p>
           <span class="go">View the system</span>
+        </a>
+        <div class="shot">
+          <img [src]="product.images[0].src" [alt]="product.images[0].alt" />
+          <a class="view-site" [href]="product.url" target="_blank" rel="noopener">Click to view website</a>
         </div>
-        <img [src]="product.images[0].src" [alt]="product.images[0].alt" />
-      </a>
+      </article>
     }
 
     <div class="grid">
@@ -30,7 +31,7 @@
           @if (i === 0) {
             <p>{{ solution.outcome }}</p>
           }
-          <span class="go">View architecture</span>
+          <span class="go">{{ solution.stage === 'studying' ? 'Where this stands' : 'View architecture' }}</span>
         </a>
       }
     </div>
