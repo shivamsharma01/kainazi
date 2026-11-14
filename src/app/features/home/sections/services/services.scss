@@ -9,7 +9,7 @@
 h2 {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-size: clamp(3.4rem, 6.5vw, 5rem);
   letter-spacing: -0.03em;
   line-height: 1.02;
   color: var(--navy);
@@ -25,7 +25,7 @@ h2 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--line);
   margin-top: 1.5rem;
 }
@@ -35,8 +35,7 @@ article {
   border-bottom: 1px solid var(--line);
 }
 
-article:nth-child(3n + 2),
-article:nth-child(3n) {
+article:nth-child(2n) {
   padding-left: 28px;
   border-left: 1px solid var(--line);
 }
@@ -66,8 +65,7 @@ p {
   }
 
   article,
-  article:nth-child(3n + 2),
-  article:nth-child(3n) {
+  article:nth-child(2n) {
     padding-left: 0;
     border-left: 0;
   }

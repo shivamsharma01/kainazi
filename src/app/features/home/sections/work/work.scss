@@ -10,15 +10,20 @@
   margin-bottom: 1.75rem;
 }
 
+.split .eyebrow {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  letter-spacing: 0.16em;
+  margin-bottom: 18px;
+}
+
 h2 {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(3.4rem, 6.5vw, 5.6rem);
+  font-size: clamp(3.4rem, 6.5vw, 5rem);
   letter-spacing: -0.035em;
   line-height: 0.98;
   color: var(--navy);
   margin: 0;
-  max-width: 14ch;
 }
 
 .split > p {

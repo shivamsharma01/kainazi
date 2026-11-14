@@ -119,17 +119,6 @@ export const SERVICES: readonly ServiceOffering[] = [
     tags: ['Spring Integration', 'Kafka', 'RabbitMQ'],
     icon: 'nodes',
   },
-  {
-    id: 'testing',
-    title: 'Testing',
-    summary: 'Unit tests and integration tests, written next to the features they cover.',
-    points: [
-      'Unit tests beside the code',
-      'Integration tests for the main paths',
-    ],
-    tags: ['JUnit', 'Mockito'],
-    icon: 'shield',
-  },
 ];
 
 export const TECH_CATEGORIES: readonly TechCategory[] = [
@@ -172,7 +161,7 @@ export const SHIPPED_WORK: readonly ShippedWork[] = [
       'The devices did not sync themselves. With more than one biometric device, the same person had to be copied from machine to machine.',
       'TimeWatch, the software already in the gym, ran on site and could not send a photograph from the computer onto a biometric device.',
       'More than 1,200 people were registered, and about 400 to 500 had an active membership. The records were paper files and registers, so it was hard to see who was about to expire and who already had.',
-      'The owner has other businesses and little time on the gym floor. He wanted to follow this one from somewhere else.',
+      'The owner runs other businesses and spends little time on the gym floor. He wanted to check on this gym without being there.',
       'He wanted WhatsApp reminders before a membership ends, and a personal offer for a member who has not come in for three months.',
     ],
     solution: [
