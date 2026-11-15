@@ -1,4 +1,32 @@
-<section class="section detail">
+<section class="section detail" [class.gym]="product()?.id === 'gym'">
+  @if (product()?.id === 'gym' && product(); as gym) {
+    <div class="gym-back wrap">
+      <a class="back" routerLink="/work">All work</a>
+    </div>
+    <app-hr13-case />
+    <div class="gym-arch">
+      <div class="gym-arch-inner">
+        <p class="eyebrow">Architecture</p>
+        <h2>How the console reaches the devices.</h2>
+        <app-hr13-arch />
+        <div class="actions">
+          <a appButton variant="secondary" [href]="gym.url" target="_blank" rel="noopener">Open the live site</a>
+          <a appButton variant="primary" routerLink="/" fragment="contact">Talk about a system like this</a>
+        </div>
+        <div class="more">
+          <h2>More systems</h2>
+          <div class="more-grid">
+            @for (item of others(); track item.id) {
+              <a [routerLink]="['/work', item.id]">
+                <span>{{ item.kicker }}</span>
+                <strong>{{ item.title }}</strong>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
   <div class="wrap">
     <a class="back" routerLink="/work">All work</a>
 
@@ -111,4 +139,5 @@
       </div>
     }
   </div>
+  }
 </section>

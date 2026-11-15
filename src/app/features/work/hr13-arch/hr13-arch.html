@@ -1,0 +1,82 @@
+<div class="tech-arch">
+  <div class="layer l1">
+    <div class="layer-label">The console, from anywhere</div>
+    <div class="nodes">
+      <div class="node n1">
+        <div class="node-name">Owner</div>
+        <p>Checks members, reports, and who is in the gym, without being on the floor.</p>
+      </div>
+      <div class="node n1">
+        <div class="node-name">Staff at the desk</div>
+        <p>Registers a member, takes the photo, and records the payment.</p>
+      </div>
+      <div class="node n1 wide">
+        <div class="node-name">Web app</div>
+        <p>Dashboard, members, attendance, payments, and reports. React, served from Cloudflare.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow arr-green">Encrypted connection over the internet</div>
+
+  <div class="layer l2">
+    <div class="layer-label">Cloud</div>
+    <div class="nodes">
+      <div class="node n2 wide">
+        <div class="node-name">API</div>
+        <p>Members, memberships, payments, attendance, and the instruction to update each gate. Spring Boot.</p>
+      </div>
+      <div class="node n2">
+        <div class="node-name">Database</div>
+        <p>The record of members, payments, and attendance. MySQL.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow arr-orange">The gym computer connects out to the cloud</div>
+
+  <div class="layer l3">
+    <div class="layer-label">At the gym</div>
+    <div class="nodes">
+      <div class="node n3 wide">
+        <div class="node-name">Gateway</div>
+        <p>A Windows service on a PC in the gym. It sends member changes to the gates and brings attendance back.</p>
+      </div>
+      <div class="node n3">
+        <div class="node-name">Local queue</div>
+        <p>Holds work that could not be delivered, so a power cut or a dropped connection does not lose it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow arr-red">The gym network, to the gates</div>
+
+  <div class="layer l4">
+    <div class="layer-label">The gates</div>
+    <div class="nodes">
+      <div class="node n4">
+        <div class="node-name">Entry</div>
+        <p>TrueFace3000. Stores the face, the name, and the validity dates, and opens the turnstile. Keeps working if the internet drops.</p>
+      </div>
+      <div class="node n4">
+        <div class="node-name">Exit</div>
+        <p>The same kind of gate, with its own copy of the members. Kept in step with the entry gate, and also fine offline.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flows">
+    <article>
+      <h3>A new member</h3>
+      <p>Saved in the cloud, sent to both gates, and checked there before the console shows it as done.</p>
+    </article>
+    <article>
+      <h3>A visit</h3>
+      <p>The gate scans the face and stores the punch. The gym computer collects it, and the dashboard updates.</p>
+    </article>
+    <article>
+      <h3>Internet down</h3>
+      <p>The gates keep using the last update. Pending changes and punches catch up when the connection returns.</p>
+    </article>
+  </div>
+</div>

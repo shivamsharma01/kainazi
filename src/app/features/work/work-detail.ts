@@ -7,10 +7,12 @@ import { SiteContentService } from '../../core/services/site-content';
 import { ArchDiagram } from '../../shared/ui/arch-diagram/arch-diagram';
 import { Button } from '../../shared/ui/button/button';
 import { Tag } from '../../shared/ui/tag/tag';
+import { Hr13Arch } from './hr13-arch/hr13-arch';
+import { Hr13Case } from './hr13-case/hr13-case';
 
 @Component({
   selector: 'app-work-detail',
-  imports: [RouterLink, ArchDiagram, Tag, Button],
+  imports: [RouterLink, ArchDiagram, Tag, Button, Hr13Case, Hr13Arch],
   templateUrl: './work-detail.html',
   styleUrl: './work-detail.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

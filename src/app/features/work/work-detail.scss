@@ -2,6 +2,81 @@
   padding-top: clamp(2.5rem, 5vw, 4rem);
 }
 
+.detail.gym {
+  padding-top: calc(var(--nav-h) + 12px);
+  background: #000;
+}
+
+.gym-back {
+  width: min(100% - 32px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 2.5vw, 40px);
+}
+
+.gym-back .back {
+  color: #a3e635;
+  margin-bottom: 12px;
+}
+
+.gym-arch {
+  background: #000;
+  color: #f3f3f3;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(16px, 2.5vw, 48px) clamp(2.5rem, 5vw, 4rem);
+}
+
+.gym-arch-inner {
+  width: min(1680px, 100%);
+  margin: 0 auto;
+}
+
+.gym-arch .eyebrow {
+  margin-bottom: 10px;
+  color: #a3e635;
+}
+
+.gym-arch h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #f3f3f3;
+  margin: 0 0 22px;
+  max-width: 18ch;
+}
+
+.gym-arch .more {
+  border-top-color: #2a2a2a;
+}
+
+.gym-arch .more-grid a {
+  color: #f3f3f3;
+  border-color: #2a2a2a;
+}
+
+.gym-arch .more-grid a:hover {
+  border-color: #a3e635;
+}
+
+.gym-arch .more-grid span {
+  color: #a3e635;
+}
+
+.gym-arch .actions {
+  margin-top: 1.75rem;
+}
+
+.gym-arch .actions .btn-secondary {
+  background: #f4f6f8;
+  color: #001a36;
+  border-color: #f4f6f8;
+}
+
+.gym-arch .actions .btn-secondary:hover {
+  background: #ffffff;
+  color: #001a36;
+}
+
 .back {
   display: inline-block;
   margin-bottom: 1.5rem;
