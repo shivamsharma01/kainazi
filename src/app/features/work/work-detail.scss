@@ -8,9 +8,9 @@
 }
 
 .gym-back {
-  width: min(100% - 32px, 100%);
+  width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(16px, 2.5vw, 40px);
+  padding: 0 clamp(32px, 4vw, 72px);
 }
 
 .gym-back .back {
@@ -21,11 +21,11 @@
 .gym-arch {
   background: #000;
   color: #f3f3f3;
-  padding: clamp(3rem, 6vw, 5.5rem) clamp(16px, 2.5vw, 48px) clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(32px, 4vw, 72px) clamp(2.5rem, 5vw, 4rem);
 }
 
 .gym-arch-inner {
-  width: min(1680px, 100%);
+  width: 100%;
   margin: 0 auto;
 }
 
